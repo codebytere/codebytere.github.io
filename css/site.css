@@ -31,6 +31,10 @@ a {
 	text-decoration: none;
 }
 
+a.ip {
+  color: orange;
+}
+
 a:hover, a:focus {
 	color: #34495e;
 }
@@ -40,31 +44,23 @@ section {
 	text-align: center;
 }
 
+section .the-intern-project {
+  display: inline;
+}
+
 p.ref {
 	text-align: center;
 	padding: 2em 1em;
 }
 
-.site-header {
+.section-header {
 	margin: 0 auto;
-	padding: 2em;
 	text-align: center;
 	max-width: 1500px;
-}
-
-.site-header h1 {
-	margin: 0;
-	font-size: 4.5em;
-	line-height: 1;
-	font-weight: 200;
-}
-
-.site-header h1 span {
-	display: block;
-	padding: 1em 0 1.5em;
-	font-size: 36%;
-	color: #95a5a6;
-	line-height: 1.4;
+  margin: 0 auto;
+  font-weight: 200;
+  font-size: 3.5em;
+  padding-bottom: 20px;
 }
 
 .site-top {
@@ -101,6 +97,14 @@ p.ref {
 
 .site-icon-prev:before {
 	content: "\e004";
+}
+
+i {
+  padding: 10px;
+}
+
+.email {
+  padding: 10px;
 }
 
 .large-header {
@@ -148,9 +152,43 @@ p.ref {
   transform: translateY(-10px);
 }
 
+.intern-project img{
+  width: 30%;
+  height: 30%;
+  float: right;
+  border-radius: 40px;
+  margin-right: 10%;
+}
+
+.intern-project li {
+  text-align: left;
+  width: 30%;
+  margin-left: 10%;
+}
+
+.intern-project .my-role p {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+.intern-project .tagline{
+  text-align: left;
+  width: 30%;
+  margin-left: 10%;
+  
+}
+
 .my-skills {
   width: 100%;
+  max-width: 980px;
   padding: 0 20px 0 20px;
+}
+
+footer {
+  line-height: 0px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 @media only screen and (max-width : 768px) {
