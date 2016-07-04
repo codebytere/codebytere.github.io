@@ -64,6 +64,7 @@ p {
 }
   
 .section-header {
+  color: white;
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
@@ -93,7 +94,9 @@ i {
   
 .site-main {
   .large-header {
-    background-image: url('../../img/site-main-bg.jpg');
+    //background-image: url('../../img/site-main-bg.jpg');
+    background-color: #004166;
+    box-shadow: 0px 30px 40px rgba(0,0,0,.1);
   }
 }
 
@@ -126,20 +129,12 @@ i {
     
 }
 
-.intern-project {
-  table{
-    table-layout: fixed;
-    margin: 0px 30px 0px 30px;
-    font-size: 22px;
-    
-    img {
-      width: 100%;
-      max-width: 300px;
-    }
-    
-    td {
-      width: 50%;
-    }
+.around-the-web {
+  background-color: #4dbeff;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.2);
+  
+  .email {
+    padding-bottom: 30px;
   }
 }
 
@@ -151,6 +146,10 @@ table {
 }
 
 .about-me {
+  background-color: #0071b3;
+  color: white;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.2);
+  
   table {
     margin: 20px;
     td {
@@ -160,15 +159,30 @@ table {
 }
 
 .my-skills {
-  width: 90%;
-  max-width: 980px;
-  padding: 0 20px 0 20px;
+  background-color: #0091e6;
+  padding: 30px;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.2);
+  
+  .skills {
+    width: 90%;
+    max-width: 980px;
+    padding: 0 20px 0 20px;
+  }
 }
+
   
 footer {
+  background-color: #ccecff;
   line-height: 0px;
   text-align: center;
   padding-top: 30px;
+  padding-bottom: 15px;
+  box-shadow: 0px 30px 40px rgba(0,0,0,.2);
+  
+  .site-code {
+    font-weight: bold;
+    color: black;
+  }
 }
   
 @media only screen and (max-width: 788px) {
@@ -224,6 +238,7 @@ footer {
   vertical-align: middle;
   z-index: 1;
   transition: all .3s ease-out;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 495px) {

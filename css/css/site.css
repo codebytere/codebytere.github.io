@@ -40,6 +40,7 @@ p .ref {
   padding: 2em 1em; }
 
 .section-header {
+  color: white;
   text-align: center;
   max-width: 1500px;
   margin: 0 auto;
@@ -63,7 +64,8 @@ i {
   z-index: 1; }
 
 .site-main .large-header {
-  background-image: url("../../img/site-main-bg.jpg"); }
+  background-color: #004166;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1); }
 
 .main-title {
   position: absolute;
@@ -88,33 +90,43 @@ i {
     letter-spacing: 0;
     transform: translateY(-10px); }
 
-.intern-project table {
-  table-layout: fixed;
-  margin: 0px 30px 0px 30px;
-  font-size: 22px; }
-  .intern-project table img {
-    width: 100%;
-    max-width: 300px; }
-  .intern-project table td {
-    width: 50%; }
+.around-the-web {
+  background-color: #4dbeff;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  .around-the-web .email {
+    padding-bottom: 30px; }
 
 table p {
   font-weight: bold; }
 
-.about-me table {
-  margin: 20px; }
-  .about-me table td {
-    width: 20%; }
+.about-me {
+  background-color: #0071b3;
+  color: white;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  .about-me table {
+    margin: 20px; }
+    .about-me table td {
+      width: 20%; }
 
 .my-skills {
-  width: 90%;
-  max-width: 980px;
-  padding: 0 20px 0 20px; }
+  background-color: #0091e6;
+  padding: 30px;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  .my-skills .skills {
+    width: 90%;
+    max-width: 980px;
+    padding: 0 20px 0 20px; }
 
 footer {
+  background-color: #ccecff;
   line-height: 0px;
   text-align: center;
-  padding-top: 30px; }
+  padding-top: 30px;
+  padding-bottom: 15px;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  footer .site-code {
+    font-weight: bold;
+    color: black; }
 
 @media only screen and (max-width: 788px) {
   .site-main .main-title {
@@ -152,7 +164,8 @@ footer {
   overflow: hidden;
   vertical-align: middle;
   z-index: 1;
-  transition: all .3s ease-out; }
+  transition: all .3s ease-out;
+  margin-bottom: 30px; }
 
 @media screen and (max-width: 495px) {
   .main-title p {
