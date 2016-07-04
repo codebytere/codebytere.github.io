@@ -1,3 +1,3 @@
 ### My Personal Website
 
-A static one-pager created with a combination of vanilla js, html, and css preprocessed with Sass.
+A static one-pager created with a combination of vanilla JS, HTML, and CSS preprocessed with Sass.
