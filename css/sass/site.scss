@@ -1,0 +1,251 @@
+@font-face {
+    font-family: 'siteicons';
+    src: url('siteicons.eot');
+    src: url('siteicons.eot?#iefix') format('embedded-opentype'),
+         url('siteicons.woff') format('woff'),
+         url('siteicons.ttf') format('truetype'),
+         url('siteicons.svg#fontname') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.clearfix {
+  &:before {
+    content: '';
+    display: table;
+  }
+  
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+body {
+  background: #fff;
+  color: #383a3c;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.25;
+  font-family: 'Raleway', Calibri, Arial, sans-serif;
+  
+  a {
+    color: #566473;
+    text-decoration: none;
+    
+    &.ip {
+      color: orange;
+    }
+    &:hover, &:focus {
+      color: #34495e;
+    }   
+    
+    button {
+      outline: none;
+    }
+  }
+}
+
+section {
+  padding-top: 3em;
+  text-align: center;
+  
+  .the-intern-project {
+    display: inline;
+  }  
+}
+  
+p {
+  .ref {
+    text-align: center;
+    padding: 2em 1em;
+  }
+}
+  
+.section-header {
+  text-align: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-weight: 200;
+  font-size: 3.5em;
+  padding-bottom: 20px;
+  
+  img {
+    width: 100px;
+    vertical-align: middle;
+  }
+}
+
+i {
+  padding: 10px;
+} 
+
+.large-header {
+  position: relative;
+  width: 100%;
+  background: #333;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+  
+.site-main {
+  .large-header {
+    background-image: url('../../img/site-main-bg.jpg');
+  }
+}
+
+.main-title {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  color: #f9f1e9;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4.2em;
+  letter-spacing: 0.1em;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  display: inline-table;
+  transform: translate3d(-50%, -50%, 0);
+     
+  .face {
+    width: 150px;
+    border-radius: 100%;
+  }
+   
+  .subtext {
+    font-weight: 200;
+    font-size: 24px;
+    letter-spacing: 0;
+    transform: translateY(-10px); 
+  }
+    
+}
+
+.intern-project {
+  table{
+    table-layout: fixed;
+    margin: 0px 30px 0px 30px;
+    font-size: 22px;
+    
+    img {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    td {
+      width: 50%;
+    }
+  }
+}
+
+
+table {
+  p {
+    font-weight: bold;
+  }
+}
+
+.about-me {
+  table {
+    margin: 20px;
+    td {
+      width: 20%;
+    }
+  }
+}
+
+.my-skills {
+  width: 90%;
+  max-width: 980px;
+  padding: 0 20px 0 20px;
+}
+  
+footer {
+  line-height: 0px;
+  text-align: center;
+  padding-top: 30px;
+}
+  
+@media only screen and (max-width: 788px) {
+  .site-main {
+    .main-title {
+      font-size: 3em;
+    }
+  }
+  
+  .section-header {
+    font-size: 34px;
+    img {
+      width: 50px;
+    }
+  }
+  
+  .intern-project {
+    table {
+      font-size: 20px;
+      margin: 20px;
+    }
+  }
+    
+  .about-me {
+    table {
+      td {
+        padding: 0;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+  
+
+.button {
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  outline: 0;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  vertical-align: middle;
+  z-index: 1;
+  transition: all .3s ease-out;
+}
+
+@media screen and (max-width: 495px) {
+  .main-title {
+    p {
+      width: 200px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+  }
+  
+  .section-header {
+    font-size: 20px;
+    img {
+      width: 45px;
+    }
+  }
+  
+  .intern-project {
+    table {
+      font-size: 16px;
+      margin: 15px;
+    }
+  }
+}
