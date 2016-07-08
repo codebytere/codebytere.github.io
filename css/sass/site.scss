@@ -53,7 +53,7 @@ section {
   
   .the-intern-project {
     display: inline;
-  }  
+  }
 }
   
 p {
@@ -80,7 +80,7 @@ p {
 
 i {
   padding: 10px;
-} 
+}
 
 .large-header {
   position: relative;
@@ -90,6 +90,7 @@ i {
   background-size: cover;
   background-position: center center;
   z-index: 1;
+  max-height: 700px;
 }
   
 .site-main {
