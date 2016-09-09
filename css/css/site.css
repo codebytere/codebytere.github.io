@@ -4,14 +4,6 @@
   src: url("siteicons.eot?#iefix") format("embedded-opentype"), url("siteicons.woff") format("woff"), url("siteicons.ttf") format("truetype"), url("siteicons.svg#fontname") format("svg");
   font-weight: normal;
   font-style: normal; }
-.clearfix:before {
-  content: '';
-  display: table; }
-.clearfix:after {
-  content: '';
-  display: table;
-  clear: both; }
-
 body {
   background: #fff;
   color: #383a3c;
@@ -22,37 +14,10 @@ body {
   body a {
     color: #566473;
     text-decoration: none; }
-    body a.ip {
-      color: orange; }
     body a:hover, body a:focus {
       color: #34495e; }
     body a button {
       outline: none; }
-
-section {
-  padding-top: 3em;
-  text-align: center; }
-  section .the-intern-project {
-    display: inline; }
-
-p .ref {
-  text-align: center;
-  padding: 2em 1em; }
-
-.section-header {
-  color: white;
-  text-align: center;
-  max-width: 1500px;
-  margin: 0 auto;
-  font-weight: 200;
-  font-size: 3.5em;
-  padding-bottom: 20px; }
-  .section-header img {
-    width: 100px;
-    vertical-align: middle; }
-
-i {
-  padding: 10px; }
 
 .large-header {
   position: relative;
@@ -63,51 +28,54 @@ i {
   background-position: center center;
   z-index: 1;
   max-height: 700px; }
+  .large-header .main-title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    display: inline-table;
+    transform: translate3d(-50%, -50%, 0);
+    text-shadow: 2px 3px black; }
+    .large-header .main-title .face {
+      width: 150px;
+      border-radius: 100%; }
+    .large-header .main-title .subtext {
+      font-weight: 200;
+      font-size: 24px;
+      letter-spacing: 0;
+      transform: translateY(-10px); }
 
 .site-main .large-header {
   background-image: url("../../img/main-bg.jpg");
   box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1); }
-
-.main-title {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  color: #f9f1e9;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 4.2em;
-  letter-spacing: 0.1em;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  display: inline-table;
-  transform: translate3d(-50%, -50%, 0); }
-  .main-title .face {
-    width: 150px;
-    border-radius: 100%; }
-  .main-title .subtext {
+.site-main section {
+  padding-top: 3em;
+  text-align: center; }
+  .site-main section .section-header {
+    color: white;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
     font-weight: 200;
-    font-size: 24px;
-    letter-spacing: 0;
-    transform: translateY(-10px); }
-
-.around-the-web {
-  background-color: #4dbeff;
-  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
-  .around-the-web .email {
-    padding-bottom: 30px; }
-
-table {
-  margin-right: 20px; }
-  table .title {
-    font-weight: bold; }
-  table td {
-    width: 20%; }
+    font-size: 3.5em;
+    padding-bottom: 20px; }
+    .site-main section .section-header img {
+      width: 100px;
+      vertical-align: middle; }
 
 .about-me {
   background-color: #004166;
   color: white;
   box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  .about-me table {
+    margin-left: 20px; }
 
 .my-skills {
   background-color: #0071b3;
@@ -141,6 +109,14 @@ table {
       margin-bottom: 5px;
       margin-left: -20px; }
 
+.around-the-web {
+  background-color: #4dbeff;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
+  .around-the-web .email {
+    padding-bottom: 30px; }
+  .around-the-web i {
+    padding: 10px; }
+
 footer {
   background-color: #ccecff;
   line-height: 0px;
@@ -152,22 +128,6 @@ footer {
     font-weight: bold;
     color: black; }
 
-@media only screen and (max-width: 788px) {
-  .site-main .main-title {
-    font-size: 3em; }
-
-  .section-header {
-    font-size: 34px; }
-    .section-header img {
-      width: 50px; }
-
-  .my-projects .title {
-    font-size: 18px; }
-
-  table td {
-    padding: 0;
-    display: block;
-    width: 100%; } }
 .button {
   border: none;
   border-radius: 2px;
@@ -190,6 +150,29 @@ footer {
   transition: all .3s ease-out;
   margin-bottom: 30px; }
 
+table {
+  margin-right: 20px; }
+  table .title {
+    font-weight: bold; }
+  table td {
+    width: 20%; }
+
+@media only screen and (max-width: 788px) {
+  .site-main .main-title {
+    font-size: 3em; }
+
+  .section-header {
+    font-size: 34px; }
+    .section-header img {
+      width: 50px; }
+
+  .my-projects .title {
+    font-size: 18px; }
+
+  table td {
+    padding: 0;
+    display: block;
+    width: 100%; } }
 @media screen and (max-width: 495px) {
   .main-title p {
     width: 200px;
