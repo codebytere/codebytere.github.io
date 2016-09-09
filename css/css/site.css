@@ -64,7 +64,7 @@ i {
   z-index: 1; }
 
 .site-main .large-header {
-  background-color: #004166;
+  background-image: url("../../img/main-bg.jpg");
   box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1); }
 
 .main-title {
@@ -96,26 +96,49 @@ i {
   .around-the-web .email {
     padding-bottom: 30px; }
 
-table p {
-  font-weight: bold; }
+table {
+  margin-right: 20px; }
+  table .title {
+    font-weight: bold; }
+  table td {
+    width: 20%; }
 
 .about-me {
-  background-color: #0071b3;
+  background-color: #004166;
   color: white;
   box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
-  .about-me table {
-    margin: 20px; }
-    .about-me table td {
-      width: 20%; }
 
 .my-skills {
-  background-color: #0091e6;
+  background-color: #0071b3;
   padding: 30px;
   box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.2); }
   .my-skills .skills {
     width: 90%;
     max-width: 980px;
     padding: 0 20px 0 20px; }
+
+.my-projects {
+  background-color: #0091e6;
+  padding: 30px; }
+  .my-projects .title {
+    font-weight: bold;
+    color: white;
+    font-size: 32px; }
+  .my-projects .description {
+    font-weight: bold; }
+  .my-projects td {
+    padding: 0px 10px; }
+  .my-projects .button {
+    margin: 20px 10px; }
+  .my-projects ul {
+    text-align: left; }
+    .my-projects ul b {
+      color: darkmagenta; }
+    .my-projects ul h4 {
+      text-align: left;
+      font-weight: 400;
+      margin-bottom: 5px;
+      margin-left: -20px; }
 
 footer {
   background-color: #ccecff;
@@ -137,11 +160,10 @@ footer {
     .section-header img {
       width: 50px; }
 
-  .intern-project table {
-    font-size: 20px;
-    margin: 20px; }
+  .my-projects .title {
+    font-size: 18px; }
 
-  .about-me table td {
+  table td {
     padding: 0;
     display: block;
     width: 100%; } }
@@ -176,10 +198,6 @@ footer {
   .section-header {
     font-size: 20px; }
     .section-header img {
-      width: 45px; }
-
-  .intern-project table {
-    font-size: 16px;
-    margin: 15px; } }
+      width: 45px; } }
 
 /*# sourceMappingURL=site.css.map */

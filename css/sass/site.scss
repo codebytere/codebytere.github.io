@@ -14,7 +14,7 @@
     content: '';
     display: table;
   }
-  
+
   &:after {
     content: '';
     display: table;
@@ -29,18 +29,18 @@ body {
   font-size: 1em;
   line-height: 1.25;
   font-family: 'Raleway', Calibri, Arial, sans-serif;
-  
+
   a {
     color: #566473;
     text-decoration: none;
-    
+
     &.ip {
       color: orange;
     }
     &:hover, &:focus {
       color: #34495e;
-    }   
-    
+    }
+
     button {
       outline: none;
     }
@@ -50,19 +50,19 @@ body {
 section {
   padding-top: 3em;
   text-align: center;
-  
+
   .the-intern-project {
     display: inline;
-  }  
+  }
 }
-  
+
 p {
   .ref {
     text-align: center;
     padding: 2em 1em;
   }
 }
-  
+
 .section-header {
   color: white;
   text-align: center;
@@ -71,7 +71,7 @@ p {
   font-weight: 200;
   font-size: 3.5em;
   padding-bottom: 20px;
-  
+
   img {
     width: 100px;
     vertical-align: middle;
@@ -80,7 +80,7 @@ p {
 
 i {
   padding: 10px;
-} 
+}
 
 .large-header {
   position: relative;
@@ -91,11 +91,11 @@ i {
   background-position: center center;
   z-index: 1;
 }
-  
+
 .site-main {
   .large-header {
-    //background-image: url('../../img/site-main-bg.jpg');
-    background-color: #004166;
+    background-image: url('../../img/main-bg.jpg');
+    //background-color: #004166;
     box-shadow: 0px 30px 40px rgba(0,0,0,.1);
   }
 }
@@ -114,55 +114,54 @@ i {
   -webkit-transform: translate3d(-50%, -50%, 0);
   display: inline-table;
   transform: translate3d(-50%, -50%, 0);
-     
+
   .face {
     width: 150px;
     border-radius: 100%;
   }
-   
+
   .subtext {
     font-weight: 200;
     font-size: 24px;
     letter-spacing: 0;
-    transform: translateY(-10px); 
+    transform: translateY(-10px);
   }
-    
+
 }
 
 .around-the-web {
   background-color: #4dbeff;
   box-shadow: 0px 30px 40px rgba(0,0,0,.2);
-  
+
   .email {
     padding-bottom: 30px;
   }
 }
 
-
 table {
-  p {
+  margin-right: 20px;
+
+  .title {
     font-weight: bold;
+  }
+
+  td {
+    width: 20%;
   }
 }
 
 .about-me {
-  background-color: #0071b3;
+  background-color: #004166;
   color: white;
   box-shadow: 0px 30px 40px rgba(0,0,0,.2);
-  
-  table {
-    margin: 20px;
-    td {
-      width: 20%;
-    }
-  }
 }
 
 .my-skills {
-  background-color: #0091e6;
+  background-color: #0071b3;
+
   padding: 30px;
   box-shadow: 0px 30px 40px rgba(0,0,0,.2);
-  
+
   .skills {
     width: 90%;
     max-width: 980px;
@@ -170,7 +169,45 @@ table {
   }
 }
 
-  
+.my-projects {
+  background-color: #0091e6;
+  padding: 30px;
+
+  .title {
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+  }
+
+  .description {
+    font-weight: bold;
+  }
+
+  td {
+    padding: 0px 10px;
+  }
+
+  .button {
+    margin: 20px 10px;
+  }
+
+  ul {
+    text-align: left;
+
+    b {
+      color: darkmagenta;
+    }
+    h4 {
+      text-align: left;
+      font-weight: 400;
+      margin-bottom: 5px;
+      margin-left: -20px;
+    }
+  }
+
+
+}
+
 footer {
   background-color: #ccecff;
   line-height: 0px;
@@ -178,45 +215,42 @@ footer {
   padding-top: 30px;
   padding-bottom: 15px;
   box-shadow: 0px 30px 40px rgba(0,0,0,.2);
-  
+
   .site-code {
     font-weight: bold;
     color: black;
   }
 }
-  
+
 @media only screen and (max-width: 788px) {
   .site-main {
     .main-title {
       font-size: 3em;
     }
   }
-  
+
   .section-header {
     font-size: 34px;
     img {
       width: 50px;
     }
   }
-  
-  .intern-project {
-    table {
-      font-size: 20px;
-      margin: 20px;
+
+  .my-projects {
+    .title {
+      font-size: 18px;
     }
   }
-    
-  .about-me {
-    table {
-      td {
-        padding: 0;
-        display: block;
-        width: 100%;
-      }
+
+
+  table {
+    td {
+      padding: 0;
+      display: block;
+      width: 100%;
     }
   }
 }
-  
 
 .button {
   border: none;
@@ -249,18 +283,11 @@ footer {
       margin-top: 20px;
     }
   }
-  
+
   .section-header {
     font-size: 20px;
     img {
       width: 45px;
-    }
-  }
-  
-  .intern-project {
-    table {
-      font-size: 16px;
-      margin: 15px;
     }
   }
 }
