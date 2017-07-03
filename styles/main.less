@@ -1,0 +1,36 @@
+@tooltip-bg-color: #D3D3D3;
+@font-family: "Lato", Georgia, Serif;
+
+html, body {
+   margin:0;
+   padding:0;
+   overflow:hidden;
+   background-color: #211E3A;
+ }
+
+svg {
+  // height: 100%;
+  // width: 100%;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  border: 0px;
+}
+
+.tooltip-inner {
+  background-color: @tooltip-bg-color !important;
+  color: black;
+  height: 40px;
+  font-size: 20px;
+  font-family: @font-family;
+  padding: 5px;
+  margin-bottom: 5px;
+  box-shadow: -2px 2px 1px 1px black;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: @tooltip-bg-color;
+  margin-bottom: 5px;
+}

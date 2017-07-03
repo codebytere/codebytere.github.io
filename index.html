@@ -1,150 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
+<html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shelley Vohr</title>
-  <meta name="description" content="@codebytere finally got around to a website update!" />
-  <meta name="keywords" content="codebytere, fullstack, developer, coding, frontend, backend, shelley vohr, shelley, vohr" />
-  <meta name="author" content="Shelley Vohr" />
-  <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="css/css/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="css/css/site.css" />
-  <link href="http://fonts.googleapis.com/css?family=Raleway:200,400,800" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+  <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
-  <div class="container site-main">
-    <div class="content">
-      <div id="large-header" class="large-header">
-        <canvas id="demo-canvas"></canvas>
-        <h1 class="main-title">
-            Shelley Vohr
-            <br>
-            <img class="face" src="img/header-pic.png">
-            <p class="subtext" >
-              Developer. Student. Learner.
-            </p>
-          </h1>
-      </div>
-    </div>
-    <section class="about-me">
-      <h1 class="section-header">About Me</h1>
-      <table>
-        <tr>
-          <td>
-            <p class="title">Running</p>
-            I've run two half-marathons and am currently training for another!
-          </td>
-          <td>
-            <p class="title">Duke University</p>
-            Majoring in Computer Science with a minor in Psychology, class of 2018.
-          </td>
-          <td>
-            <p class="title">Linguistics</p>
-            Working to develop a constructed language under IPA guidelines for personal use.
-          </td>
-        </tr>
-      </table>
-      <br>
-      <div>
-        <h2>See My Resume</h2>
-        <a class="button" target="_blank" href="img/ShelleyVohrResume.pdf">View</a>
-      </div>
-    </section>
-    <section class="my-skills">
-      <img class="skills" src="img/my-skills-md.png">
-    </section>
-    <section class="my-projects">
-      <h1 class="section-header">My Projects</h1>
-      <table>
-        <tr>
-          <td valign="top">
-            <p class="title">Dotify</p>
-            <p class="description">
-              This tool assists in the installation of dotfiles as you set up a new computer or simply seek to make your existing system better.
-            </p>
-            <ul>
-              <h4>This dotfiles tool contains:</h4>
-              <li><b>zsh installation</b> and default setup</li>
-              <li>Bundled installation of <b>brew, node, & ruby</b></li>
-              <li>A series of optionally installable <b>npm modules</b></li>
-              <li>A series of optionally installable <b>brew & brew cask packages</b></li>
-              <li>A series of optionally installable <b>ruby gems</b></li>
-              <li>Simple set of terminal <b>aliases</b> and <b>functions</b></li>
-              <li>Global <b>gitconfig credentials</b> and handy set of <b>git aliases</b></li>
-            </ul>
-            <br>
-            <a class="button" target="_blank" href="https://github.com/codebytere/dotify">Source Code</a>
-          </td>
-          <td valign="top">
-            <p class="title">Map</p>
-            <p class="description">
-              This application allows for you to view and edit personalized map markers according to a series of predetermined categories.
-            </p>
-            Current categories include Restaurants, Coffee, Nightlife, Landmarks, and Key Locations.
-            <br>
-
-            <br>
-            <a class="button" target="_blank" href="https://github.com/codebytere/personal-map">Source Code</a>
-            <a class="button" target="_blank" href="https://codebytere.github.io/personal-map">Site</a>
-          </td>
-        </tr>
-      </table>
-    </section>
-    <section class="around-the-web">
-      <h1 class="section-header">Find Me Here</h1>
-      <div class="links">
-        <a target="_blank" href="https://github.com/codebytere">
-          <i class="fa fa-github fa-3x"></i>
-        </a>
-        <a target="_blank" href="https://twitter.com/codebytere">
-          <i class="fa fa-twitter fa-3x"></i>
-        </a>
-        <a target="_blank" href="https://linkedin.com/in/shelleyvohr">
-          <i class="fa fa-linkedin fa-3x"></i>
-        </a>
-        <a target="_blank" href="https://facebook.com/shelley.vohr">
-          <i class="fa fa-facebook-square fa-3x"></i>
-        </a>
-        <a target="_blank" href="https://soundcloud.com/csvohr">
-          <i class="fa fa-soundcloud fa-3x"></i>
-        </a>
-      </div>
-      <div class="email">
-        <a href="mailto:shelley.vohr@gmail.com">shelley.vohr@gmail.com</a>
-        <br>
-        <a href="mailto:codebytere@gmail.com">codebytere@gmail.com</a>
-      </div>
-    </section>
-  </div>
-  <footer>
-    <p>All Rights Reserved © Shelley Vohr 2016</p>
-    <p> Made with ❤ and coffee</p>
-    <p>Site code can be found <a class="site-code" target="_blank" href="https://github.com/codebytere/codebytere.github.io">here.</a></p>
-  </footer>
-  <script src="js/TweenLite.min.js"></script>
-  <script src="js/EasePack.min.js"></script>
-  <script src="js/rAF.js"></script>
-  <script src="js/site-main.js"></script>
-
-  <script type="text/javascript">
-  var sc_project=11031950;
-  var sc_invisible=1;
-  var sc_security="dc0c1d97";
-  var scJsHost = (("https:" == document.location.protocol) ?
-  "https://secure." : "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" +
-  scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="shopify
-  analytics tool" href="http://statcounter.com/shopify/"
-  target="_blank"><img class="statcounter"
-  src="//c.statcounter.com/11031950/0/dc0c1d97/1/"
-  alt="shopify analytics tool"></a></div></noscript>
+  <div id="stage"></div>
 </body>
 
 </html>
