@@ -649,8 +649,8 @@
         id="Shape"
         fill="#818182"
         fill-rule="nonzero"></path>
-      <text id="Codebytere" transform="translate(189.026110, 318.391669) rotate(-5.000000) translate(-189.026110, -318.391669) " font-family="HanziPenSC-W3, HanziPen SC" font-size="20" font-weight="normal" fill="#FFFFFF">
-        <tspan x="138.02611" y="325.391669">Codebytere</tspan>
+      <text id="Codebytere" transform="translate(196.529975, 325.018023) rotate(-5.000000) translate(-196.529975, -325.018023) " font-family="HanziPenSC-W3, HanziPen SC" font-size="30" font-weight="normal" fill="#FFFFFF">
+        <tspan x="126.564029" y="336.018023">Codebytere</tspan>
       </text>
       <g id="handle" transform="translate(416.000000, 113.000000)">
         <path

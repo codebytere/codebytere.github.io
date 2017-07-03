@@ -1,0 +1,40 @@
+// Tooltip Customizations
+
+.tooltip {
+  .tooltip-inner {
+    background-color: @tooltip-bg-color !important;
+    color: black;
+    height: 40px;
+    font-size: 20px;
+    font-family: @font-family;
+    padding: 5px;
+    margin-bottom: 5px;
+    box-shadow: -2px 2px 1px 1px black;
+  }
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: @tooltip-bg-color;
+  margin-bottom: 5px;
+}
+
+// Modal Customizations
+
+.modal {
+  h2 {
+    text-align: center;
+  }
+}
+
+.modal-body {
+  height: 400px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 900px;
+  }
+  .modal-body {
+    padding: 0px 0px !important;
+  }
+}
