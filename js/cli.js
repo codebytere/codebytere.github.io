@@ -37,6 +37,12 @@ function setDirectory(dir) {
   localStorage.directory = dir;
 }
 
+function registerFullscreenToggle() {
+  $('.button.green').click(() => {
+    $('.terminal-window').toggleClass('fullscreen');
+  });
+}
+
 const commands = {};
 let systemData = {};
 const rootPath = 'users/codebytere/root';
@@ -99,6 +105,7 @@ commands.cat = (filename) => {
 
 // initialize cli
 $(() => {
+  registerFullscreenToggle();
   const cmd = document.getElementById('terminal');
   const terminal = new shell(cmd, commands);
 
