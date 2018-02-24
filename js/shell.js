@@ -1,4 +1,11 @@
-/* global $, localStorage */
+/* global $, localStorage, alert */
+
+const comms = ['cat', 'help', 'cd', 'clear', 'history', 'ls', 'path']
+const dirs = {
+  'root': ['about.txt', 'projects', 'skills', 'contact.txt', 'resume.txt'],
+  'projects': ['nodemessage.txt', 'slack_automation.txt', 'map.txt', 'dotify.txt'],
+  'skills': ['proficient.txt', 'familiar.txt', 'learning.txt']
+}
 
 class Shell {
   constructor (term, commands) {
@@ -39,9 +46,16 @@ class Shell {
     })
 
     term.addEventListener('keydown', (evt) => {
+      const match = (val) => val != null ? filter(val) : ''
+
       // a tab is pressed
       if (evt.keyCode === 9) {
         evt.preventDefault()
+        const content = $('.input').last().html()
+        const matched = match(content)
+        if (content !== matched && matched !== '') {
+          $('.input').last().html(matched)
+        }
       }
     })
 
@@ -108,4 +122,21 @@ class Shell {
     )
     $('.input').focus()
   }
+}
+
+function filter (part) {
+  const currDir = dirs[localStorage.directory]
+  const matcher = new RegExp(['^', part].join(''), 'i')
+
+  const filterer = (arr) => {
+    return arr.filter(val => {
+      const str = val.toString()
+      try {
+        return (matcher.exec(str)) ? str.substring(part.length - 1, str.length - 1) : null
+      } catch (err) {
+        alert(err)
+      }
+    })
+  }
+  return (filterer(comms) !== null) ? filterer(comms) : filterer(currDir)
 }
