@@ -1,3 +1,6 @@
 ### My Personal Website
 
-A static one-pager created with a combination of vanilla JS, HTML, and CSS preprocessed with Sass.
+An interactive `cli` that allows you to learn about my by navigating around a terminal
+emulator.
+
+Built with vanilla js & less.
