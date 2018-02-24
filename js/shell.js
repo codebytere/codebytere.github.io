@@ -38,6 +38,13 @@ class Shell {
       }
     })
 
+    term.addEventListener('keydown', (evt) => {
+      // a tab is pressed
+      if (evt.keyCode === 9) {
+        evt.preventDefault()
+      }
+    })
+
     term.addEventListener('keypress', (evt) => {
       if (evt.keyCode === 13) {
         localStorage.historyIndex = 0
