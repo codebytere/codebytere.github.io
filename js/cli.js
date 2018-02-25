@@ -1,4 +1,4 @@
-/* global $, localStorage */
+/* global $, localStorage, Shell */
 
 const errors = {
   invalidDirectory: 'Error: not a valid directory',
@@ -18,12 +18,10 @@ let systemData = {}
 const rootPath = 'users/codebytere/root'
 
 const getDirectory = () => localStorage.directory
+const setDirectory = (dir) => { localStorage.directory = dir }
 
-const setDirectory = (dir) => {
-  localStorage.directory = dir
-}
-
-function registerFullscreenToggle () {
+// turn on fullscreen
+const registerFullscreenToggle = () => {
   $('.button.green').click(() => {
     $('.terminal-window').toggleClass('fullscreen')
   })

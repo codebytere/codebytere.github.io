@@ -42,6 +42,10 @@ class Shell {
       // a tab is pressed
       if (evt.keyCode === 9) {
         evt.preventDefault()
+      // escape key is pressed
+      } else if (evt.keyCode === 27) {
+        console.log('hello')
+        $('.terminal-window').toggleClass('fullscreen')
       }
     })
 
