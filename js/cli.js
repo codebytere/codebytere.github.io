@@ -3,7 +3,8 @@
 const errors = {
   invalidDirectory: 'Error: not a valid directory',
   noWriteAccess: 'Error: you do not have write access to this directory',
-  fileNotFound: 'Error: file not found in current directory'
+  fileNotFound: 'Error: file not found in current directory',
+  fileNotSpecified: 'Error: you did not specify a file'
 }
 
 const struct = {
@@ -74,6 +75,8 @@ commands.cd = (newDirectory) => {
 
 // display contents of specified file
 commands.cat = (filename) => {
+  if (!filename) return errors.fileNotSpecified
+
   const dir = getDirectory()
   const fileKey = filename.split('.')[0]
 
