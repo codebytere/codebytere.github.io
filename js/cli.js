@@ -8,7 +8,7 @@ const errors = {
 }
 
 const struct = {
-  root: ['about', 'resume', 'contact'],
+  root: ['about', 'resume', 'contact', 'talks'],
   projects: ['nodemessage', 'map', 'dotify', 'slack_automation'],
   skills: ['proficient', 'familiar', 'learning']
 }
