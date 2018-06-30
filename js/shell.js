@@ -120,7 +120,10 @@ class Shell {
     history = history ? Object.values(JSON.parse(history)) : []
     if (localStorage.goingThroughHistory == 'true')
       localStorage.goingThroughHistory = 'false'
-    localStorage.historyIndex = history.length - 1 > 0 ? history.length - 1 : 0
+    if (history.length == 0) // case when there is no command in history array
+        localStorage.historyIndex = -1
+    else 
+        localStorage.historyIndex = history.length - 1 > 0 ? history.length - 1 : 0
   }
 
   updateHistory (command) {
