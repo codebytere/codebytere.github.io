@@ -27,27 +27,30 @@ class Shell {
         let history = localStorage.history
         history = history ? Object.values(JSON.parse(history)) : []
         if (key === keyUp && localStorage.historyIndex >= 0) {
-          if (localStorage.goingThroughHistory == 'false')
-              localStorage.goingThroughHistory = 'true'
-          else {
-              if(localStorage.historyIndex == history.length-1 && history.length != 1) // Prevents repitation of last command while traversing history
-                  localStorage.historyIndex -=1
+          if (localStorage.goingThroughHistory == 'false') {
+            localStorage.goingThroughHistory = 'true'
+          } else {
+            if (localStorage.historyIndex == history.length - 1 && history.length != 1) { // Prevents repitation of last command while traversing history
+              localStorage.historyIndex -= 1
+            }
           }
           $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-          if (localStorage.historyIndex != 0) // Prevents undefined index
-             localStorage.historyIndex -= 1
+          if (localStorage.historyIndex != 0) { // Prevents undefined index
+            localStorage.historyIndex -= 1
+          }
         } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory == 'true') {
           if (localStorage.historyIndex > 0) {
-              $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-              if (localStorage.historyIndex != history.length - 1) // Prevents undefined index
-                  localStorage.historyIndex = Number(localStorage.historyIndex) + 1
-          }
-          else if (localStorage.historyIndex == 0 && history.length > 1) { // Prevents repitation of first command while traversing history
-              $('.input').last().html(`${history[1]}<span class="end"><span>`)
-              if (history.length != 2)
-                  localStorage.historyIndex = 2
-              else
-                  localStorage.historyIndex = 1
+            $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
+            if (localStorage.historyIndex != history.length - 1) { // Prevents undefined index
+              localStorage.historyIndex = Number(localStorage.historyIndex) + 1
+            }
+          } else if (localStorage.historyIndex == 0 && history.length > 1) { // Prevents repitation of first command while traversing history
+            $('.input').last().html(`${history[1]}<span class="end"><span>`)
+            if (history.length != 2) {
+              localStorage.historyIndex = 2
+            } else {
+              localStorage.historyIndex = 1
+            }
           }
         }
         evt.preventDefault()
@@ -63,15 +66,15 @@ class Shell {
       } else if (evt.keyCode === 27) {
         $('.terminal-window').toggleClass('fullscreen')
       } else if (evt.keyCode === 8 || evt.keyCode === 46) {
-          // backspace or delete key is pressed
+        // backspace or delete key is pressed
         this.resetHistoryIndex()
       }
     })
 
     term.addEventListener('keypress', (evt) => {
-        if (![9, 27, 37, 38, 39, 40].includes(evt.keyCode)) {
-            // excluding all these keys as this event is fired in firefox for arrow an tab keys
-            // if input keys are pressed then resetHistoryIndex() is called
+      if (![9, 27, 37, 38, 39, 40].includes(evt.keyCode)) {
+        // excluding all these keys as this event is fired in firefox for arrow an tab keys
+        // if input keys are pressed then resetHistoryIndex() is called
         this.resetHistoryIndex()
       }
       if (evt.keyCode === 13) {
@@ -114,16 +117,18 @@ class Shell {
     newPrompt.querySelector('.input').focus()
   }
 
-  resetHistoryIndex() {
-      // Resets history Index and sets goingThroughHistory to false
+  resetHistoryIndex () {
+    // Resets history Index and sets goingThroughHistory to false
     let history = localStorage.history
     history = history ? Object.values(JSON.parse(history)) : []
-    if (localStorage.goingThroughHistory == 'true')
+    if (localStorage.goingThroughHistory == 'true') {
       localStorage.goingThroughHistory = 'false'
-    if (history.length == 0) // case when there is no command in history array
-        localStorage.historyIndex = -1
-    else 
-        localStorage.historyIndex = history.length - 1 > 0 ? history.length - 1 : 0
+    }
+    if (history.length == 0) { // case when there is no command in history array
+      localStorage.historyIndex = -1
+    } else {
+      localStorage.historyIndex = history.length - 1 > 0 ? history.length - 1 : 0
+    }
   }
 
   updateHistory (command) {
