@@ -9,7 +9,7 @@ class Shell {
     localStorage.directory = 'root'
     localStorage.history = JSON.stringify('')
     localStorage.historyIndex = -1 // Solves undefined command on refreshing the website
-    localStorage.goingThroughHistory = true // To prevent down arrow traversal when not required
+    localStorage.goingThroughHistory = false // To prevent down arrow traversal when not required
     $('.input').focus()
   }
 
