@@ -9,14 +9,12 @@ class Shell {
     localStorage.directory = 'root'
     localStorage.history = JSON.stringify('')
     localStorage.historyIndex = -1 // Solves undefined command on refreshing the website
-    localStorage.goingThroughHistory = false // To prevent down arrow traversal when not required
+    localStorage.inHistory = false // To prevent down arrow traversal when not required
     $('.input').focus()
   }
 
   setupListeners (term) {
-    $('#terminal').mouseup(() => {
-      $('.input').last().focus()
-    })
+    $('#terminal').mouseup(() => $('.input').last().focus())
 
     term.addEventListener('keyup', (evt) => {
       const keyUp = 38
@@ -26,27 +24,34 @@ class Shell {
       if ([keyUp, keyDown].includes(key)) {
         let history = localStorage.history
         history = history ? Object.values(JSON.parse(history)) : []
-        if (key === keyUp && localStorage.historyIndex >= 0) {
-          if (!localStorage.goingThroughHistory) {
-            localStorage.goingThroughHistory = true
-          } else {
-            if (localStorage.historyIndex === history.length - 1 && history.length !== 1) { // Prevents repitation of last command while traversing history
-              localStorage.historyIndex -= 1
+        if (key === keyUp) {
+          if (localStorage.historyIndex >= 0) {
+            if (!localStorage.inHistory) {
+              localStorage.inHistory = true
+            } else {
+              // Prevents repetition of last command while traversing history
+              if (localStorage.historyIndex === history.length - 1 && history.length !== 1) {
+                localStorage.historyIndex -= 1
+              }
             }
           }
           $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-          if (localStorage.historyIndex !== 0) { // Prevents undefined index
-            localStorage.historyIndex -= 1
-          }
-        } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory) {
-          if (localStorage.historyIndex > 0) {
-            $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-            if (localStorage.historyIndex !== history.length - 1) { // Prevents undefined index
-              localStorage.historyIndex = Number(localStorage.historyIndex) + 1
+          // Prevents undefined index
+          if (localStorage.historyIndex !== 0) localStorage.historyIndex -= 1
+        } else if (key === keyDown) {
+          if (localStorage.inHistory && localStorage.historyIndex < history.length) {
+            let ret
+            if (localStorage.historyIndex > 0) {
+              ret = `${history[localStorage.historyIndex]}<span class="end"><span>`
+              if (localStorage.historyIndex !== history.length - 1) {
+                localStorage.historyIndex = Number(localStorage.historyIndex) + 1
+              }
+            // Prevents repetition of first command while traversing history
+            } else if (localStorage.historyIndex === 0 && history.length > 1) {
+              ret = `${history[1]}<span class="end"><span>`
+              localStorage.historyIndex = history.length !== 2 ? 2 : 1
             }
-          } else if (localStorage.historyIndex === 0 && history.length > 1) { // Prevents repitation of first command while traversing history
-            $('.input').last().html(`${history[1]}<span class="end"><span>`)
-            localStorage.historyIndex = history.length !== 2 ? 2 : 1
+            $('.input').last().html(ret)
           }
         }
         evt.preventDefault()
