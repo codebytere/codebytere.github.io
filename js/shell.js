@@ -9,7 +9,7 @@ class Shell {
     localStorage.directory = 'root'
     localStorage.history = JSON.stringify('')
     localStorage.historyIndex = -1 // Solves undefined command on refreshing the website
-    localStorage.goingThroughHistory = 'false' // To prevent down arrow traversal when not required
+    localStorage.goingThroughHistory = true // To prevent down arrow traversal when not required
     $('.input').focus()
   }
 
@@ -27,8 +27,8 @@ class Shell {
         let history = localStorage.history
         history = history ? Object.values(JSON.parse(history)) : []
         if (key === keyUp && localStorage.historyIndex >= 0) {
-          if (localStorage.goingThroughHistory == 'false') {
-            localStorage.goingThroughHistory = 'true'
+          if (localStorage.goingThroughHistory == false) {
+            localStorage.goingThroughHistory = true
           } else {
             if (localStorage.historyIndex == history.length - 1 && history.length != 1) { // Prevents repitation of last command while traversing history
               localStorage.historyIndex -= 1
@@ -38,7 +38,7 @@ class Shell {
           if (localStorage.historyIndex != 0) { // Prevents undefined index
             localStorage.historyIndex -= 1
           }
-        } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory == 'true') {
+        } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory == true) {
           if (localStorage.historyIndex > 0) {
             $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
             if (localStorage.historyIndex != history.length - 1) { // Prevents undefined index
@@ -121,8 +121,8 @@ class Shell {
     // Resets history Index and sets goingThroughHistory to false
     let history = localStorage.history
     history = history ? Object.values(JSON.parse(history)) : []
-    if (localStorage.goingThroughHistory == 'true') {
-      localStorage.goingThroughHistory = 'false'
+    if (localStorage.goingThroughHistory == true) {
+      localStorage.goingThroughHistory = false
     }
     if (history.length == 0) { // case when there is no command in history array
       localStorage.historyIndex = -1
