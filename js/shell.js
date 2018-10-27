@@ -27,30 +27,26 @@ class Shell {
         let history = localStorage.history
         history = history ? Object.values(JSON.parse(history)) : []
         if (key === keyUp && localStorage.historyIndex >= 0) {
-          if (localStorage.goingThroughHistory == false) {
+          if (!localStorage.goingThroughHistory) {
             localStorage.goingThroughHistory = true
           } else {
-            if (localStorage.historyIndex == history.length - 1 && history.length != 1) { // Prevents repitation of last command while traversing history
+            if (localStorage.historyIndex === history.length - 1 && history.length !== 1) { // Prevents repitation of last command while traversing history
               localStorage.historyIndex -= 1
             }
           }
           $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-          if (localStorage.historyIndex != 0) { // Prevents undefined index
+          if (localStorage.historyIndex !== 0) { // Prevents undefined index
             localStorage.historyIndex -= 1
           }
-        } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory == true) {
+        } else if (key === keyDown && localStorage.historyIndex < history.length && localStorage.goingThroughHistory) {
           if (localStorage.historyIndex > 0) {
             $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`)
-            if (localStorage.historyIndex != history.length - 1) { // Prevents undefined index
+            if (localStorage.historyIndex !== history.length - 1) { // Prevents undefined index
               localStorage.historyIndex = Number(localStorage.historyIndex) + 1
             }
-          } else if (localStorage.historyIndex == 0 && history.length > 1) { // Prevents repitation of first command while traversing history
+          } else if (localStorage.historyIndex === 0 && history.length > 1) { // Prevents repitation of first command while traversing history
             $('.input').last().html(`${history[1]}<span class="end"><span>`)
-            if (history.length != 2) {
-              localStorage.historyIndex = 2
-            } else {
-              localStorage.historyIndex = 1
-            }
+            localStorage.historyIndex = history.length !== 2 ? 2 : 1
           }
         }
         evt.preventDefault()
