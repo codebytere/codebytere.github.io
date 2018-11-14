@@ -36,8 +36,13 @@ commands.touch = () => errors.noWriteAccess
 // remove file from current directory
 commands.rm = () => errors.noWriteAccess
 
-// view contents of current directory
-commands.ls = () => systemData[getDirectory()]
+// view contents of specified directory
+commands.ls = (directory) => {
+  if (directory === '..' || directory === '~') {
+    return systemData['root']
+  }
+  return systemData[getDirectory()]
+}
 
 // view list of possible commands
 commands.help = () => systemData.help
@@ -58,12 +63,12 @@ commands.history = () => {
 // move into specified directory
 commands.cd = (newDirectory) => {
   const currDir = getDirectory()
-  const dirs = ['root', 'projects', 'skills']
+  const dirs = Object.keys(struct)
   const newDir = newDirectory ? newDirectory.trim() : ''
 
   if (dirs.includes(newDir) && currDir !== newDir) {
     setDirectory(newDir)
-  } else if (newDir === '') {
+  } else if (newDir === '' || newDir === '~' || (newDir === '..' && dirs.includes(currDir))) {
     setDirectory('root')
   } else {
     return errors.invalidDirectory
