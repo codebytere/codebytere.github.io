@@ -2,7 +2,7 @@
 	"about": "<p>I'm a primarily backend software engineer based in San Francisco, CA!<br> <br> Passionate about clean code, running, exploring, morning crosswords, and learning any and everything that happens to come my way. <br> <br> I work as a core engineer on the Electron javascript framework team at GitHub 😀</p>",
 	"contact": "<ul class='contact'><li><a class='blue' target='_blank' href='https://github.com/codebytere'>GitHub</a></li><li><a class='blue' target='_blank' href='https://www.messenger.com/t/shelley.vohr'>Messenger</a></li><li><a class='blue' target='_blank' href='https://www.linkedin.com/in/codebytere'>LinkedIn</a></li><li><a class='blue' target='_blank' href='https://www.twitter.com/codebytere'>Twitter</a></li><li><a class='blue' target='_blank' href='https://www.soundcloud.com/csvohr'>SoundCloud</a></li></ul>",
 	"resume": "<a class='blue' target='_blank' href='data/csv-resume.pdf'>View My Resume</a>",
-	"talks": "<h4>Talks I've Given:</h4><ul><li>GitHub Universe 2017</li><li>Nodevember 2017</li><li>JSConf EU 2018</li><li>Node Summit 2018</li><li>Electron Bay Area Users Meetup 2018</li><li>WaffleJS January 2019</li></ul>",
+	"talks": "<h4>Talks I've Given:</h4><ul><li>GitHub Universe 2017</li><li>Nodevember 2017</li><li>JSConf EU 2018</li><li>Node Summit 2018</li><li>Electron Bay Area Users Meetup 2018</li><li>WaffleJS January 2019</li><li>Modern JS /Runtimes/ 2019</li><li>JSHeroes 2019</li></ul>",
 	"proficient": "<ul><li>Ruby & Ruby on Rails</li><li>Javascript</li><li>Python</li><li>Java</li><li>HTML5/CSS3</li><li>Bash</li><li>GraphQL</li></ul>",
 	"familiar": "<ul><li>C</li><li>Sketch</li></ul>",
 	"learning": "<ul><li>React</li></ul>",
