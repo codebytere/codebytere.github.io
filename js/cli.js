@@ -70,7 +70,7 @@ commands.cd = (newDirectory) => {
     setDirectory(newDir)
   } else if (newDir === '' || newDir === '~' || (newDir === '..' && dirs.includes(currDir))) {
     setDirectory('root')
-  } else {
+  } else if (newDir !== '.') {
     return errors.invalidDirectory
   }
   return null
