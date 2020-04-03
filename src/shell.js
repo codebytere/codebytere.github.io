@@ -87,7 +87,7 @@ class Shell {
       if (evt.keyCode === 13) {
         const prompt = evt.target;
         const input = prompt.textContent.trim().split(' ');
-        const cmd = input[0];
+        const cmd = input[0].toLowerCase();
         const args = input[1];
 
         if (cmd === 'clear') {
