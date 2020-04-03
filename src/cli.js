@@ -9,8 +9,7 @@ const errors = {
 
 const struct = {
   root: ['about', 'resume', 'contact', 'talks'],
-  projects: ['nodemessage', 'map', 'dotify', 'slack_automation'],
-  skills: ['proficient', 'familiar', 'learning'],
+  skills: ['proficient', 'familiar'],
 };
 
 const commands = {};
@@ -22,47 +21,48 @@ const setDirectory = (dir) => {
   localStorage.directory = dir;
 };
 
-// turn on fullscreen
+// Turn on fullscreen.
 const registerFullscreenToggle = () => {
   $('.button.green').click(() => {
     $('.terminal-window').toggleClass('fullscreen');
   });
 };
 
-// create new directory in current directory
+// Create new directory in current directory.
 commands.mkdir = () => errors.noWriteAccess;
 
-// create new directory in current directory
+// Create new directory in current directory.
 commands.touch = () => errors.noWriteAccess;
 
-// remove file from current directory
+// Remove file from current directory.
 commands.rm = () => errors.noWriteAccess;
 
-// view contents of specified directory
+// View contents of specified directory.
 commands.ls = (directory) => {
+  console.log(systemData);
   if (directory === '..' || directory === '~') {
     return systemData['root'];
   }
   return systemData[getDirectory()];
 };
 
-// view list of possible commands
+// View list of possible commands.
 commands.help = () => systemData.help;
 
-// display current path
+// Display current path.
 commands.path = () => {
   const dir = getDirectory();
   return dir === 'root' ? rootPath : `${rootPath}/${dir}`;
 };
 
-// see command history
+// See command history.
 commands.history = () => {
   let history = localStorage.history;
   history = history ? Object.values(JSON.parse(history)) : [];
   return `<p>${history.join('<br>')}</p>`;
 };
 
-// move into specified directory
+// Move into specified directory.
 commands.cd = (newDirectory) => {
   const currDir = getDirectory();
   const dirs = Object.keys(struct);
@@ -78,7 +78,7 @@ commands.cd = (newDirectory) => {
   return null;
 };
 
-// display contents of specified file
+// Display contents of specified file.
 commands.cat = (filename) => {
   if (!filename) return errors.fileNotSpecified;
 
@@ -92,14 +92,47 @@ commands.cat = (filename) => {
   return errors.fileNotFound;
 };
 
-// initialize cli
+// Initialize cli.
 $(() => {
   registerFullscreenToggle();
   const cmd = document.getElementById('terminal');
-  const terminal = new Shell(cmd, commands);
 
   $.ajaxSetup({ cache: false });
-  $.get('data/system_data.json', (data) => {
-    systemData = data;
-  });
+  const pages = [];
+  pages.push($.get('pages/about.html'));
+  pages.push($.get('pages/contact.html'));
+  pages.push($.get('pages/familiar.html'));
+  pages.push($.get('pages/help.html'));
+  pages.push($.get('pages/proficient.html'));
+  pages.push($.get('pages/resume.html'));
+  pages.push($.get('pages/root.html'));
+  pages.push($.get('pages/skills.html'));
+  pages.push($.get('pages/talks.html'));
+  $.when
+    .apply($, pages)
+    .done(
+      (
+        aboutData,
+        contactData,
+        familiarData,
+        helpData,
+        proficientData,
+        resumeData,
+        rootData,
+        skillsData,
+        talksData,
+      ) => {
+        systemData['about'] = aboutData[0];
+        systemData['contact'] = contactData[0];
+        systemData['familiar'] = familiarData[0];
+        systemData['help'] = helpData[0];
+        systemData['proficient'] = proficientData[0];
+        systemData['resume'] = resumeData[0];
+        systemData['root'] = rootData[0];
+        systemData['skills'] = skillsData[0];
+        systemData['talks'] = talksData[0];
+      },
+    );
+
+  const terminal = new Shell(cmd, commands);
 });
