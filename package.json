@@ -1,0 +1,25 @@
+{
+  "name": "codebyte.re",
+  "version": "1.0.0",
+  "description": "codebytere's personal website",
+  "main": "js/cli.js",
+  "scripts": {
+    "dev": "http-server -o",
+    "format": "prettier --write 'src/*.js'",
+    "lint": "prettier --check 'src/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codebytere/codebytere.github.io.git"
+  },
+  "author": "Shelley Vohr <shelley.vohr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codebytere/codebytere.github.io/issues"
+  },
+  "homepage": "https://github.com/codebytere/codebytere.github.io#readme",
+  "devDependencies": {
+    "http-server": "^0.12.1",
+    "prettier": "^2.0.2"
+  }
+}
