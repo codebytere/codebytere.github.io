@@ -29,8 +29,8 @@ const registerFullscreenToggle = () => {
 };
 const registerMinimizedToggle = () => {
   $('.button.yellow').click(() => {
-    $('.terminal-window').toggleClass('minimized')
-  })
+    $('.terminal-window').toggleClass('minimized');
+  });
 };
 
 // Create new directory in current directory.
@@ -100,7 +100,7 @@ commands.cat = (filename) => {
 // Initialize cli.
 $(() => {
   registerFullscreenToggle();
-  registerMinimizedToggle()
+  registerMinimizedToggle();
   const cmd = document.getElementById('terminal');
 
   $.ajaxSetup({ cache: false });
