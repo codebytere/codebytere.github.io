@@ -95,14 +95,13 @@ commands.cat = (filename) => {
 
   const isADirectory = (filename) => struct.hasOwnProperty(filename);
   const hasValidFileExtension = (filename, extension) => filename.includes(extension);
-  const isFileInDirectory = (filename) => filename.split('/').length === 1 ? false : true;
+  const isFileInDirectory = (filename) => (filename.split('/').length === 1 ? false : true);
   const isFileInSubdirectory = (filename, directory) => struct[directory].includes(filename);
-  
-  
+
   if (isADirectory(filename)) return errors.invalidFile;
-  
+
   if (!isFileInDirectory(filename)) {
-    const fileKey = filename.split('.')[0]
+    const fileKey = filename.split('.')[0];
     const isValidFile = (filename) => systemData.hasOwnProperty(filename);
 
     if (isValidFile(fileKey) && hasValidFileExtension(filename, '.txt')) {
@@ -115,9 +114,12 @@ commands.cat = (filename) => {
       const directories = filename.split('/');
       const directory = directories.slice(0, 1).join(',');
       const fileKey = directories.slice(1, directories.length).join(',').split('.')[0];
-      if (directory === 'root' || !struct.hasOwnProperty(directory)) return errors.noSuchFileOrDirectory;
+      if (directory === 'root' || !struct.hasOwnProperty(directory))
+        return errors.noSuchFileOrDirectory;
 
-      return isFileInSubdirectory(fileKey, directory) ? systemData[fileKey] : errors.noSuchFileOrDirectory;
+      return isFileInSubdirectory(fileKey, directory)
+        ? systemData[fileKey]
+        : errors.noSuchFileOrDirectory;
     }
 
     return errors.noSuchFileOrDirectory;
