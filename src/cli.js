@@ -5,6 +5,7 @@ const errors = {
   noWriteAccess: 'Error: you do not have write access to this directory',
   fileNotFound: 'Error: file not found in current directory',
   fileNotSpecified: 'Error: you did not specify a file',
+  invalidFile: 'Error: not a valid file',
 };
 
 const struct = {
@@ -91,6 +92,7 @@ commands.cd = (newDirectory) => {
 // Display contents of specified file.
 commands.cat = (filename) => {
   if (!filename) return errors.fileNotSpecified;
+<<<<<<< HEAD
 
   const dir = getDirectory();
   const fileKey = filename.split('.')[0];
@@ -98,6 +100,39 @@ commands.cat = (filename) => {
     return systemData[fileKey];
   }
 
+=======
+
+  const isADirectory = (filename) => struct.hasOwnProperty(filename);
+  const hasValidFileExtension = (filename, extension) => filename.includes(extension);
+  const isFileInDirectory = (filename) => filename.split('/').length === 1 ? false : true;
+  const isFileInSubdirectory = (filename, directory) => struct[directory].includes(filename);
+  
+  
+  if (isADirectory(filename)) return errors.invalidFile;
+  
+  if (!isFileInDirectory(filename)) {
+    const fileKey = filename.split('.')[0]
+    const isValidFile = (filename) => systemData.hasOwnProperty(filename);
+
+    if (isValidFile(fileKey) && hasValidFileExtension(filename, '.txt')) {
+      return systemData[fileKey];
+    }
+  }
+
+  if (isFileInDirectory(filename)) {
+    if (hasValidFileExtension(filename, '.txt')) {
+      const directories = filename.split('/');
+      const directory = directories.slice(0, 1).join(',');
+      const fileKey = directories.slice(1, directories.length).join(',').split('.')[0];
+      if (directory === 'root' || !struct.hasOwnProperty(directory)) return errors.noSuchFileOrDirectory;
+
+      return isFileInSubdirectory(fileKey, directory) ? systemData[fileKey] : errors.noSuchFileOrDirectory;
+    }
+
+    return errors.noSuchFileOrDirectory;
+  }
+
+>>>>>>> Change logic
   return errors.fileNotFound;
 };
 
