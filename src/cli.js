@@ -48,6 +48,11 @@ commands.ls = (directory) => {
   if (directory === '..' || directory === '~') {
     return systemData['root'];
   }
+
+  if (directory in struct) {
+    return systemData[directory];
+  }
+
   return systemData[getDirectory()];
 };
 
@@ -89,7 +94,6 @@ commands.cat = (filename) => {
 
   const dir = getDirectory();
   const fileKey = filename.split('.')[0];
-
   if (fileKey in systemData && struct[dir].includes(fileKey)) {
     return systemData[fileKey];
   }
