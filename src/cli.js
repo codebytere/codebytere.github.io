@@ -92,15 +92,6 @@ commands.cd = (newDirectory) => {
 // Display contents of specified file.
 commands.cat = (filename) => {
   if (!filename) return errors.fileNotSpecified;
-<<<<<<< HEAD
-
-  const dir = getDirectory();
-  const fileKey = filename.split('.')[0];
-  if (fileKey in systemData && struct[dir].includes(fileKey)) {
-    return systemData[fileKey];
-  }
-
-=======
 
   const isADirectory = (filename) => struct.hasOwnProperty(filename);
   const hasValidFileExtension = (filename, extension) => filename.includes(extension);
@@ -132,7 +123,6 @@ commands.cat = (filename) => {
     return errors.noSuchFileOrDirectory;
   }
 
->>>>>>> Change logic
   return errors.fileNotFound;
 };
 
