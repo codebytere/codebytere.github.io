@@ -91,6 +91,7 @@ class Shell {
         const args = input[1];
 
         if (cmd === 'clear') {
+          this.updateHistory(cmd);
           this.clearConsole();
         } else if (cmd && cmd in this.commands) {
           this.runCommand(cmd, args);
