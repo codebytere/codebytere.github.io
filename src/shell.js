@@ -35,7 +35,9 @@ class Shell {
             if (localStorage.historyIndex == history.length - 1 && history.length !== 1) {
               localStorage.historyIndex -= 1;
             }
-            $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
+            $('.input')
+              .last()
+              .html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
             if (localStorage.historyIndex != 0) localStorage.historyIndex -= 1;
           }
         } else if (key === keyDown) {
