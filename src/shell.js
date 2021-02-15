@@ -28,29 +28,27 @@ class Shell {
 
         if (key === keyUp) {
           if (localStorage.historyIndex >= 0) {
-            if (!localStorage.inHistory) {
+            if (localStorage.inHistory == 'false') {
               localStorage.inHistory = true;
-            } else {
-              // Prevent repetition of last command while traversing history.
-              if (localStorage.historyIndex === history.length - 1 && history.length !== 1) {
-                localStorage.historyIndex -= 1;
-              }
             }
+            // Prevent repetition of last command while traversing history.
+            if (localStorage.historyIndex == history.length - 1 && history.length !== 1) {
+              localStorage.historyIndex -= 1;
+            }
+            $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
+            if (localStorage.historyIndex != 0) localStorage.historyIndex -= 1;
           }
-
-          $('.input').last().html(`${history[localStorage.historyIndex]}<span class="end"><span>`);
-          if (localStorage.historyIndex !== 0) localStorage.historyIndex -= 1;
         } else if (key === keyDown) {
-          if (localStorage.inHistory && localStorage.historyIndex < history.length) {
+          if (localStorage.inHistory == 'true' && localStorage.historyIndex < history.length) {
             let ret;
 
             if (localStorage.historyIndex > 0) {
               ret = `${history[localStorage.historyIndex]}<span class="end"><span>`;
-              if (localStorage.historyIndex !== history.length - 1) {
+              if (localStorage.historyIndex != history.length - 1) {
                 localStorage.historyIndex = Number(localStorage.historyIndex) + 1;
               }
               // Prevent repetition of first command while traversing history.
-            } else if (localStorage.historyIndex === 0 && history.length > 1) {
+            } else if (localStorage.historyIndex == 0 && history.length > 1) {
               ret = `${history[1]}<span class="end"><span>`;
               localStorage.historyIndex = history.length !== 2 ? 2 : 1;
             }
