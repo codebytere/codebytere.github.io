@@ -4,4 +4,4 @@ An interactive `cli` that allows you to learn about me by navigating around a te
 
 Built with JavaScript & less.
 
-![](screenshot.jpg)
+![](screenshot.png)
