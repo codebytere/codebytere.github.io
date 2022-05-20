@@ -84,7 +84,9 @@ class Shell {
         // If input keys are pressed then resetHistoryIndex() is called.
         this.resetHistoryIndex();
       }
+      
       if (evt.keyCode === 13) {
+        // If enter key is pressed.
         const prompt = evt.target;
         const input = prompt.textContent.trim().split(' ');
         const cmd = input[0].toLowerCase();
