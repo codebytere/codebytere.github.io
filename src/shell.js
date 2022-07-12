@@ -163,7 +163,7 @@ class Shell {
             <span class="root">${dir}</span>
             <span class="tick">$</span>
           </span>
-          <span contenteditable="true" class="input"></span>
+          <span contenteditable="true" class="input" spellcheck="false"></span>
         </p>`,
     );
 
