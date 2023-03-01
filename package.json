@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/codebytere/codebytere.github.io#readme",
   "devDependencies": {
-    "http-server": "^0.12.1",
+    "http-server": "^0.12.3",
     "prettier": "^2.0.2"
   }
 }
