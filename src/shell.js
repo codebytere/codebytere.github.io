@@ -184,8 +184,8 @@ class Shell {
       if (matches.length === 1) {
         const completion = matches[0];
         const newText = currentText.replace(new RegExp(lastWord + '$'), completion);
-        input.html(`${newText}<span class="end"><span>`);
-        $('.end').focus();
+        input.html(newText);
+        this.setCursorToEnd(input[0]);
       } else if (matches.length > 1) {
         this.showCompletionOptions(matches);
       }
@@ -209,8 +209,8 @@ class Shell {
           const completion = matches[0];
           words[words.length - 1] = completion;
           const newText = words.join(' ');
-          input.html(`${newText}<span class="end"><span>`);
-          $('.end').focus();
+          input.html(newText);
+          this.setCursorToEnd(input[0]);
         } else if (matches.length > 1) {
           this.showCompletionOptions(matches);
         }
@@ -242,8 +242,8 @@ class Shell {
           const completion = matches[0];
           words[words.length - 1] = completion;
           const newText = words.join(' ');
-          input.html(`${newText}<span class="end"><span>`);
-          $('.end').focus();
+          input.html(newText);
+          this.setCursorToEnd(input[0]);
         } else if (matches.length > 1) {
           this.showCompletionOptions(matches);
         }
@@ -255,5 +255,15 @@ class Shell {
     const optionsHtml = matches.join('&nbsp;&nbsp;&nbsp;&nbsp;');
     this.term.innerHTML += `<br>${optionsHtml}`;
     this.resetPrompt(this.term, $('.input').last().parent()[0]);
+  }
+
+  setCursorToEnd(element) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    element.focus();
   }
 }
