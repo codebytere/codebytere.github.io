@@ -22,7 +22,25 @@ I work as a core engineer on the Electron JavaScript framework team at Microsoft
 
   resume: `<p><a href="data/csv-resume.pdf" target="_blank" rel="noopener">View My Resume</a></p>`,
 
-  talks: `<p class="muted">Coming soon — check back later!</p>`,
+  talks: `<ul>
+<li>WeyWeyWeb 2025</li>
+<li>SquiggleConf 2025</li>
+<li>CityJS Athens 2025</li>
+<li>Covalence Conf 2020</li>
+<li>NodeConf EU 2019</li>
+<li>Nordic.js 2019</li>
+<li>QueerJS Stockholm 2019</li>
+<li>JSConf Budapest 2019</li>
+<li>JSHeroes 2019</li>
+<li>Modern JS Runtimes 2019</li>
+<li>WaffleJS January 2019</li>
+<li>Node Collaborator Summit 2018</li>
+<li>Electron Bay Area Meetup 2018</li>
+<li>Node Summit 2018</li>
+<li>JSConf EU 2018</li>
+<li>HackDuke 2017</li>
+</ul>
+<p><a href="https://github.com/codebytere/talks" target="_blank" rel="noopener">View all slides on GitHub</a></p>`,
 
   help: `<ul>
 <li><span class="command">path</span> — display current directory</li>
