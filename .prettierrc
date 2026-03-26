@@ -3,6 +3,6 @@
   "tabWidth": 2,
   "singleQuote": true,
   "printWidth": 100,
-  "parser": "typescript",
+  "parser": "babel",
   "endOfLine": "lf"
 }

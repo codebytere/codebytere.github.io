@@ -2,7 +2,7 @@
   "name": "codebyte.re",
   "version": "1.0.0",
   "description": "codebytere's personal website",
-  "main": "js/cli.js",
+  "main": "src/main.js",
   "scripts": {
     "dev": "http-server -o",
     "format": "prettier --write 'src/*.js'",

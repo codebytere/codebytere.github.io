@@ -1,38 +1,69 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
-    <script type="text/javascript" src="src/shell.js"></script>
-    <script type="text/javascript" src="src/cli.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codebyte.re</title>
+    <meta
+      name="description"
+      content="Shelley Vohr — software engineer, Electron maintainer"
+    />
+    <meta property="og:title" content="codebyte.re" />
+    <meta
+      property="og:description"
+      content="Shelley Vohr — software engineer, Electron maintainer"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://codebyte.re" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
-  
+
   <body>
-  
-  <div class="terminal-window">
-    <header>
-      <div class="button red"></div>
-      <div class="button yellow"></div>
-      <div class="button green"></div>
-    </header>
-    <div id="terminal">
-      <p><span class="green">\[._.]/</span> - you're in codebytere's cli! type `help` to get started.</p>
-        <p class="hidden">
-          <span class="prompt">
-            <span class="root">root</span>
-            <span class="tick">❯</span>
-          </span>
-          <span contenteditable="true" class="input" spellcheck="false"></span>
-        </p>
+    <div class="terminal-window">
+      <header class="terminal-header">
+        <div class="btn close"></div>
+        <div class="btn minimize"></div>
+        <div class="btn fullscreen"></div>
+      </header>
+      <div id="terminal" role="log" aria-live="polite" aria-label="Terminal">
+      </div>
+      <input
+        id="terminal-input"
+        type="text"
+        autocomplete="off"
+        autofocus
+        aria-label="Command input"
+      />
     </div>
-  </div>
-  
-  <div class="footer">
-    <p>© Shelley Vohr 2026</p>
-    <p> Made with ❤ and coffee</p>
-    <p>Site code can be found <a class="site-code" target="_blank" href="https://github.com/codebytere/codebytere.github.io">here</a></p>
-  </div>
-  
+
+    <div class="reopen-prompt">click to reopen terminal</div>
+
+    <div class="footer">
+      <p>&copy; Shelley Vohr 2026</p>
+      <p>
+        Made with ❤ and coffee —
+        <a
+          target="_blank"
+          rel="noopener"
+          href="https://github.com/codebytere/codebytere.github.io"
+          >source</a
+        >
+      </p>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
   </body>
+</html>

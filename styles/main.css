@@ -1,0 +1,314 @@
+:root {
+  --bg-page: #211e3a;
+  --bg-terminal: #1e1e1e;
+  --bg-header: #2d2d2d;
+  --text-primary: #e6edf3;
+  --text-muted: #7d8590;
+  --green: #3fb950;
+  --pink: #f778ba;
+  --cyan: #79c0ff;
+  --yellow: #e3b341;
+  --red: #f85149;
+  --purple: #bc8cff;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Monaco,
+    Consolas, monospace;
+  --font-size: 14px;
+  --line-height: 1.6;
+  --terminal-radius: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-page);
+  font-family: var(--font-mono);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Terminal window */
+.terminal-window {
+  width: min(900px, 90vw);
+  height: min(520px, 70vh);
+  border-radius: var(--terminal-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.terminal-window.minimized {
+  height: 34px;
+  width: 250px;
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-window.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.terminal-window.closed {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Header bar */
+.terminal-header {
+  background: var(--bg-header);
+  height: 34px;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  gap: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.3);
+}
+
+.btn.close {
+  background: #e75448;
+}
+
+.btn.minimize {
+  background: #e5c30f;
+}
+
+.btn.fullscreen {
+  background: #3bb662;
+}
+
+/* Terminal body */
+#terminal {
+  flex: 1;
+  background: var(--bg-terminal);
+  padding: 12px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: var(--font-mono);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text-primary);
+}
+
+#terminal::-webkit-scrollbar {
+  width: 6px;
+}
+
+#terminal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+/* Output lines */
+.output-line {
+  word-wrap: break-word;
+}
+
+#terminal p,
+#terminal ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Prompt line */
+.prompt-line {
+  white-space: nowrap;
+}
+
+.prompt {
+  margin-right: 8px;
+}
+
+.prompt-user {
+  color: var(--green);
+}
+
+.prompt-tick {
+  color: var(--pink);
+}
+
+.prompt-input {
+  color: var(--text-primary);
+  white-space: pre;
+}
+
+/* Hidden real input */
+#terminal-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  border-left: 2px solid var(--text-primary);
+  height: 1.2em;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Content styling */
+.dir {
+  color: var(--cyan);
+}
+
+.green {
+  color: var(--green);
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.error {
+  color: var(--red);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.command {
+  color: var(--purple);
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding-left: 4px;
+}
+
+ul li {
+  padding: 2px 0;
+}
+
+ul li::before {
+  content: '- ';
+  color: var(--text-muted);
+}
+
+/* Reopen prompt (shown when terminal is closed) */
+.reopen-prompt {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: none;
+}
+
+.reopen-prompt:hover {
+  color: var(--text-primary);
+}
+
+.reopen-prompt.visible {
+  display: block;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.footer a {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+/* Tab completion dropdown */
+.tab-options {
+  color: var(--text-muted);
+  padding: 2px 0;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  body {
+    padding: 10px;
+    justify-content: flex-start;
+    padding-top: 10vh;
+  }
+
+  .terminal-window {
+    width: 100%;
+    height: 65vh;
+  }
+
+  :root {
+    --font-size: 13px;
+  }
+}
