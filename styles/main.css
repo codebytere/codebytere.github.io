@@ -47,26 +47,19 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s ease;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  position: relative;
 }
 
 .terminal-window.minimized {
   height: 34px;
   width: 250px;
-  position: fixed;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .terminal-window.fullscreen {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   border-radius: 0;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;

@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Window buttons
   document.querySelector('.btn.fullscreen').addEventListener('click', () => {
+    terminalWindow.classList.remove('minimized');
     terminalWindow.classList.toggle('fullscreen');
   });
 
   document.querySelector('.btn.minimize').addEventListener('click', () => {
+    terminalWindow.classList.remove('fullscreen');
     terminalWindow.classList.toggle('minimized');
   });
 

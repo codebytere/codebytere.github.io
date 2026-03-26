@@ -40,9 +40,9 @@ export class Terminal {
 
         case 'Escape':
           e.preventDefault();
-          document
-            .querySelector('.terminal-window')
-            .classList.toggle('fullscreen');
+          const win = document.querySelector('.terminal-window');
+          win.classList.remove('minimized');
+          win.classList.toggle('fullscreen');
           break;
       }
     });
