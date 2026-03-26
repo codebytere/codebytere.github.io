@@ -71,6 +71,7 @@ class Shell {
 
       if (evt.keyCode === 9) {
         evt.preventDefault();
+        this.handleTabCompletion();
       } else if (evt.keyCode === 27) {
         $('.terminal-window').toggleClass('fullscreen');
       } else if (evt.keyCode === 8 || evt.keyCode === 46) {
@@ -168,5 +169,101 @@ class Shell {
     );
 
     $('.input').focus();
+  }
+
+  handleTabCompletion() {
+    const input = $('.input').last();
+    const currentText = input.text().trim();
+    const words = currentText.split(' ');
+    const lastWord = words[words.length - 1];
+
+    if (words.length === 1) {
+      const commandNames = Object.keys(this.commands);
+      const matches = commandNames.filter((cmd) => cmd.startsWith(lastWord));
+
+      if (matches.length === 1) {
+        const completion = matches[0];
+        const newText = currentText.replace(new RegExp(lastWord + '$'), completion);
+        input.html(newText);
+        this.setCursorToEnd(input[0]);
+      } else if (matches.length > 1) {
+        this.showCompletionOptions(matches);
+      }
+    } else if (words.length === 2) {
+      const command = words[0];
+      if (command === 'cd' || command === 'ls') {
+        const struct = {
+          root: ['about', 'resume', 'contact', 'talks'],
+          skills: ['proficient', 'familiar'],
+        };
+        const currentDir = localStorage.directory;
+        const directories = ['~', '..'].concat(Object.keys(struct));
+
+        if (currentDir in struct) {
+          directories.push(...struct[currentDir]);
+        }
+
+        const matches = directories.filter((dir) => dir.startsWith(lastWord));
+
+        if (matches.length === 1) {
+          const completion = matches[0];
+          words[words.length - 1] = completion;
+          const newText = words.join(' ');
+          input.html(newText);
+          this.setCursorToEnd(input[0]);
+        } else if (matches.length > 1) {
+          this.showCompletionOptions(matches);
+        }
+      } else if (command === 'cat') {
+        const struct = {
+          root: ['about', 'resume', 'contact', 'talks'],
+          skills: ['proficient', 'familiar'],
+        };
+        const currentDir = localStorage.directory;
+        const files = [];
+
+        if (currentDir === 'root') {
+          files.push(...struct.root.map((f) => f + '.txt'));
+        } else if (currentDir in struct) {
+          files.push(...struct[currentDir].map((f) => f + '.txt'));
+        }
+
+        Object.keys(struct).forEach((dir) => {
+          if (dir !== 'root') {
+            struct[dir].forEach((file) => {
+              files.push(`${dir}/${file}.txt`);
+            });
+          }
+        });
+
+        const matches = files.filter((file) => file.startsWith(lastWord));
+
+        if (matches.length === 1) {
+          const completion = matches[0];
+          words[words.length - 1] = completion;
+          const newText = words.join(' ');
+          input.html(newText);
+          this.setCursorToEnd(input[0]);
+        } else if (matches.length > 1) {
+          this.showCompletionOptions(matches);
+        }
+      }
+    }
+  }
+
+  showCompletionOptions(matches) {
+    const optionsHtml = matches.join('&nbsp;&nbsp;&nbsp;&nbsp;');
+    this.term.innerHTML += `<br>${optionsHtml}`;
+    this.resetPrompt(this.term, $('.input').last().parent()[0]);
+  }
+
+  setCursorToEnd(element) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    element.focus();
   }
 }
