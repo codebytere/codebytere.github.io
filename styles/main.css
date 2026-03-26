@@ -248,10 +248,6 @@ ul li::before {
 
 /* Reopen prompt (shown when terminal is closed) */
 .reopen-prompt {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--font-size);
