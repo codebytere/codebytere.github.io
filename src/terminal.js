@@ -145,11 +145,12 @@ export class Terminal {
 
   handleTab() {
     const raw = this.hiddenInput.value;
-    const parts = raw.split(/\s+/);
+    const hasSpace = raw.includes(' ');
+    const parts = raw.split(/\s+/).filter((p) => p !== '');
 
     let candidates = [];
 
-    if (parts.length <= 1) {
+    if (parts.length <= 1 && !hasSpace) {
       // Complete command name
       const prefix = parts[0].toLowerCase();
       candidates = Object.keys(this.commands).filter((c) =>
@@ -173,23 +174,40 @@ export class Terminal {
     } else {
       // Complete filename argument
       const cmd = parts[0].toLowerCase();
-      const partial = parts.slice(1).join(' ').toLowerCase();
-      const files = this.commands.__getFiles
-        ? this.commands.__getFiles(this)
-        : [];
+      const partial = (parts.slice(1).join(' ') || '').toLowerCase();
 
-      candidates = files.filter((f) => f.toLowerCase().startsWith(partial));
+      // Check if partial contains a directory prefix like "talks/wey"
+      let dirPrefix = '';
+      let filePartial = partial;
+      let lookupDir = null;
+
+      if (partial.includes('/')) {
+        const slashIdx = partial.lastIndexOf('/');
+        dirPrefix = partial.slice(0, slashIdx + 1);
+        filePartial = partial.slice(slashIdx + 1);
+        lookupDir = partial.slice(0, slashIdx);
+      }
+
+      const files = this.commands.__getFilesIn
+        ? this.commands.__getFilesIn(lookupDir, this)
+        : this.commands.__getFiles
+          ? this.commands.__getFiles(this)
+          : [];
+
+      candidates = files.filter((f) =>
+        f.toLowerCase().startsWith(filePartial),
+      );
 
       if (candidates.length === 1) {
-        this.hiddenInput.value = cmd + ' ' + candidates[0];
+        this.hiddenInput.value = cmd + ' ' + dirPrefix + candidates[0];
         this.updateVisibleInput();
       } else if (candidates.length > 1) {
         this.printHTML(
           `<span class="tab-options">${candidates.join('  ')}</span>`,
         );
         const common = this.commonPrefix(candidates);
-        if (common.length > partial.length) {
-          this.hiddenInput.value = cmd + ' ' + common;
+        if (common.length > filePartial.length) {
+          this.hiddenInput.value = cmd + ' ' + dirPrefix + common;
           this.updateVisibleInput();
         }
       }

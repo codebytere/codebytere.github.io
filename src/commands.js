@@ -40,13 +40,7 @@ I work as a core engineer on the Electron JavaScript framework team at Microsoft
 
   resume: `<p><a href="data/csv-resume.pdf" target="_blank" rel="noopener">View My Resume</a></p>`,
 
-  talks: `<p>weyweyweb-2025.txt&nbsp;&nbsp;squiggleconf-2025.txt&nbsp;&nbsp;cityjs-athens-2025.txt
-covalence-2020.txt&nbsp;&nbsp;nodeconf-eu-2019.txt&nbsp;&nbsp;nordicjs-2019.txt
-jsconf-budapest-2019.txt&nbsp;&nbsp;queerjs-stockholm-2019.txt&nbsp;&nbsp;jsheroes-2019.txt
-modern-js-runtimes-2019.txt&nbsp;&nbsp;wafflejs-2019.txt&nbsp;&nbsp;node-collaborator-summit-2018.txt
-electron-meetup-2018.txt&nbsp;&nbsp;node-summit-2018.txt&nbsp;&nbsp;jsconf-eu-2018.txt
-hackduke-2017.txt</p>
-<p><a href="https://github.com/codebytere/talks" target="_blank" rel="noopener">View all slides on GitHub</a></p>`,
+  talks: null, // generated dynamically by formatLs
 
   'weyweyweb-2025': `<p><span class="cyan">WeyWeyWeb 2025</span><br>Exploring Node.js memory management with V8, covering garbage collection types and how to identify and fix memory issues in JavaScript.</p>`,
 
@@ -91,7 +85,7 @@ hackduke-2017.txt</p>
 <li><span class="command">clear</span> — clear the terminal</li>
 </ul>`,
 
-  root: `<p>about.txt&nbsp;&nbsp;contact.txt&nbsp;&nbsp;resume.txt&nbsp;&nbsp;<span class="dir">talks/</span></p>`,
+  root: null, // generated dynamically by formatLs
 };
 
 const openLinks = {
@@ -99,6 +93,35 @@ const openLinks = {
   bluesky: 'https://bsky.app/profile/codebyte.re',
   linkedin: 'https://www.linkedin.com/in/codebytere',
 };
+
+// Format entries into aligned columns like `ls` in a real terminal
+function formatLs(dir, cols = 3) {
+  const entries = (struct[dir] || []).map((f) =>
+    f in struct ? { name: f + '/', isDir: true } : { name: f + '.txt', isDir: false },
+  );
+
+  if (entries.length === 0) return '';
+
+  const colWidth = Math.max(...entries.map((e) => e.name.length)) + 2;
+  const rows = [];
+
+  for (let i = 0; i < entries.length; i += cols) {
+    const row = entries.slice(i, i + cols).map((e) => {
+      const padded = e.name.padEnd(colWidth);
+      return e.isDir ? `<span class="dir">${padded}</span>` : padded;
+    });
+    rows.push(row.join(''));
+  }
+
+  let html = `<pre style="margin:0">${rows.join('\n')}</pre>`;
+
+  // Add GitHub link for talks directory
+  if (dir === 'talks') {
+    html += `<p><a href="https://github.com/codebytere/talks" target="_blank" rel="noopener">View all slides on GitHub</a></p>`;
+  }
+
+  return html;
+}
 
 export function createCommands() {
   const commands = {};
@@ -116,12 +139,28 @@ export function createCommands() {
   commands.ls = (directory, terminal) => {
     const dir = clean(directory);
     if (!dir || dir === '..' || dir === '~') {
-      return content[terminal.directory] || content.root;
+      return formatLs(terminal.directory);
     }
     if (dir in struct) {
-      return content[dir];
+      return formatLs(dir);
     }
-    return content[terminal.directory] || content.root;
+    // Not a directory — check if it's a file
+    const name = dir.replace(/\.txt$/, '');
+    // Check current directory
+    const currentFiles = struct[terminal.directory] || struct.root;
+    if (currentFiles.includes(name)) {
+      return name + '.txt';
+    }
+    // Check path like talks/weyweyweb-2025.txt
+    if (dir.includes('/')) {
+      const parts = dir.split('/');
+      const parentDir = parts[0];
+      const file = parts.slice(1).join('/').replace(/\.txt$/, '');
+      if (struct[parentDir] && struct[parentDir].includes(file)) {
+        return file + '.txt';
+      }
+    }
+    return `<span class="error">no such file or directory: ${directory}</span>`;
   };
 
   commands.cd = (newDirectory, terminal) => {
@@ -221,6 +260,13 @@ export function createCommands() {
   commands.__getFiles = (terminal) => {
     const dir = terminal.directory;
     const files = struct[dir] || struct.root;
+    return files.map((f) => (f in struct ? f + '/' : f + '.txt'));
+  };
+
+  // Helper for tab completion with explicit directory lookup
+  commands.__getFilesIn = (dir, terminal) => {
+    const lookupDir = dir && dir in struct ? dir : terminal.directory;
+    const files = struct[lookupDir] || struct.root;
     return files.map((f) => (f in struct ? f + '/' : f + '.txt'));
   };
 
