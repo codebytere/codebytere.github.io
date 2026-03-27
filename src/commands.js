@@ -2,6 +2,24 @@ const rootPath = 'users/codebytere/root';
 
 const struct = {
   root: ['about', 'contact', 'resume', 'talks'],
+  talks: [
+    'weyweyweb-2025',
+    'squiggleconf-2025',
+    'cityjs-athens-2025',
+    'covalence-2020',
+    'nodeconf-eu-2019',
+    'nordicjs-2019',
+    'jsconf-budapest-2019',
+    'queerjs-stockholm-2019',
+    'jsheroes-2019',
+    'modern-js-runtimes-2019',
+    'wafflejs-2019',
+    'node-collaborator-summit-2018',
+    'electron-meetup-2018',
+    'node-summit-2018',
+    'jsconf-eu-2018',
+    'hackduke-2017',
+  ],
 };
 
 const content = {
@@ -22,25 +40,45 @@ I work as a core engineer on the Electron JavaScript framework team at Microsoft
 
   resume: `<p><a href="data/csv-resume.pdf" target="_blank" rel="noopener">View My Resume</a></p>`,
 
-  talks: `<ul>
-<li>WeyWeyWeb 2025</li>
-<li>SquiggleConf 2025</li>
-<li>CityJS Athens 2025</li>
-<li>Covalence Conf 2020</li>
-<li>NodeConf EU 2019</li>
-<li>Nordic.js 2019</li>
-<li>QueerJS Stockholm 2019</li>
-<li>JSConf Budapest 2019</li>
-<li>JSHeroes 2019</li>
-<li>Modern JS Runtimes 2019</li>
-<li>WaffleJS January 2019</li>
-<li>Node Collaborator Summit 2018</li>
-<li>Electron Bay Area Meetup 2018</li>
-<li>Node Summit 2018</li>
-<li>JSConf EU 2018</li>
-<li>HackDuke 2017</li>
-</ul>
+  talks: `<p>weyweyweb-2025.txt&nbsp;&nbsp;squiggleconf-2025.txt&nbsp;&nbsp;cityjs-athens-2025.txt
+covalence-2020.txt&nbsp;&nbsp;nodeconf-eu-2019.txt&nbsp;&nbsp;nordicjs-2019.txt
+jsconf-budapest-2019.txt&nbsp;&nbsp;queerjs-stockholm-2019.txt&nbsp;&nbsp;jsheroes-2019.txt
+modern-js-runtimes-2019.txt&nbsp;&nbsp;wafflejs-2019.txt&nbsp;&nbsp;node-collaborator-summit-2018.txt
+electron-meetup-2018.txt&nbsp;&nbsp;node-summit-2018.txt&nbsp;&nbsp;jsconf-eu-2018.txt
+hackduke-2017.txt</p>
 <p><a href="https://github.com/codebytere/talks" target="_blank" rel="noopener">View all slides on GitHub</a></p>`,
+
+  'weyweyweb-2025': `<p><span class="cyan">WeyWeyWeb 2025</span><br>Exploring Node.js memory management with V8, covering garbage collection types and how to identify and fix memory issues in JavaScript.</p>`,
+
+  'squiggleconf-2025': `<p><span class="cyan">SquiggleConf 2025</span><br>A deep dive into the Electron team's automation approach — guiding principles for deciding what to automate, and real-world examples of productivity improvements.</p>`,
+
+  'cityjs-athens-2025': `<p><span class="cyan">CityJS Athens 2025</span><br>Demystifying V8 garbage collection and memory management in Node.js through real-world examples and practical strategies for writing efficient code.</p>`,
+
+  'covalence-2020': `<p><span class="cyan">Covalence Conf 2020</span><br>Exploring Node.js memory management with V8, garbage collection types, memory issues, and practical tips to avoid common pitfalls.</p>`,
+
+  'nodeconf-eu-2019': `<p><span class="cyan">NodeConf EU 2019</span><br>The journey of a native Electron function to top-level JavaScript — a deep dive through Node.js, Chromium, and V8.</p>`,
+
+  'nordicjs-2019': `<p><span class="cyan">Nordic.js 2019</span><br>Modernizing JavaScript APIs in Electron — from asynchronous JS to getters/setters, balancing innovation with maintenance.</p>`,
+
+  'jsconf-budapest-2019': `<p><span class="cyan">JSConf Budapest 2019</span><br>Modern APIs in Electron — asynchronous JS, getters/setters, and balancing platform-dependent functionality with developer experience.</p>`,
+
+  'queerjs-stockholm-2019': `<p><span class="cyan">QueerJS Stockholm 2019</span><br>The tension between human and bot mediated tasks — Electron's automation work and considerations for choosing what to automate.</p>`,
+
+  'jsheroes-2019': `<p><span class="cyan">JSHeroes 2019</span><br>How event loops in Node.js and Chromium must be reconciled in Electron to enable cross-platform desktop development.</p>`,
+
+  'modern-js-runtimes-2019': `<p><span class="cyan">Modern JS Runtimes 2019</span><br>How features written in C++ or Objective-C get to JavaScript — combining V8, Chromium components, and Node to deliver module APIs.</p>`,
+
+  'wafflejs-2019': `<p><span class="cyan">WaffleJS 2019</span><br>Crossword puzzles as a lens for considering different approaches to software engineering and personal development.</p>`,
+
+  'node-collaborator-summit-2018': `<p><span class="cyan">Node Collaborator Summit 2018</span><br>Requirements and pain points around embedding Node, and how to improve the embedding experience.</p>`,
+
+  'electron-meetup-2018': `<p><span class="cyan">Electron Bay Area Meetup 2018</span><br>How a small team managed a large ecosystem with bots and automation.</p>`,
+
+  'node-summit-2018': `<p><span class="cyan">Node Summit 2018</span><br>The evolution of Electron from atom-shell beginnings to 2018, its role in the JS ecosystem, and the future of desktop runtimes.</p>`,
+
+  'jsconf-eu-2018': `<p><span class="cyan">JSConf EU 2018</span><br>Exploring the conceptual underpinnings of asynchronous programming options available to modern JavaScript developers.</p>`,
+
+  'hackduke-2017': `<p><span class="cyan">HackDuke 2017</span><br>Hackathon talk at Duke University.</p>`,
 
   help: `<ul>
 <li><span class="command">path</span> — display current directory</li>
@@ -53,7 +91,7 @@ I work as a core engineer on the Electron JavaScript framework team at Microsoft
 <li><span class="command">clear</span> — clear the terminal</li>
 </ul>`,
 
-  root: `<p>about.txt&nbsp;&nbsp;contact.txt&nbsp;&nbsp;resume.txt&nbsp;&nbsp;talks.txt</p>`,
+  root: `<p>about.txt&nbsp;&nbsp;contact.txt&nbsp;&nbsp;resume.txt&nbsp;&nbsp;<span class="dir">talks/</span></p>`,
 };
 
 const openLinks = {
@@ -72,26 +110,31 @@ export function createCommands() {
     return dir === 'root' ? rootPath : `${rootPath}/${dir}`;
   };
 
+  // Normalize input: strip trailing slashes, trim whitespace
+  const clean = (str) => (str || '').trim().replace(/\/+$/, '');
+
   commands.ls = (directory, terminal) => {
-    if (directory === '..' || directory === '~' || !directory) {
+    const dir = clean(directory);
+    if (!dir || dir === '..' || dir === '~') {
       return content[terminal.directory] || content.root;
     }
-    if (directory in struct) {
-      return content[directory];
+    if (dir in struct) {
+      return content[dir];
     }
     return content[terminal.directory] || content.root;
   };
 
   commands.cd = (newDirectory, terminal) => {
     const dirs = Object.keys(struct);
-    const newDir = newDirectory ? newDirectory.trim() : '';
+    const newDir = clean(newDirectory);
 
     if (dirs.includes(newDir) && terminal.directory !== newDir) {
       terminal.directory = newDir;
     } else if (
       newDir === '' ||
       newDir === '~' ||
-      (newDir === '..' && dirs.includes(terminal.directory))
+      newDir === '..' ||
+      newDir === '/'
     ) {
       terminal.directory = 'root';
     } else {
@@ -105,26 +148,34 @@ export function createCommands() {
       return '<span class="error">usage: cat FILENAME</span>';
     }
 
-    const clean = filename.replace(/\.txt$/, '');
+    const name = clean(filename).replace(/\.txt$/, '');
 
     // Check if it's a directory name
-    if (clean in struct) {
-      return `<span class="error">${terminal.escapeHTML(clean)} is a directory</span>`;
+    if (name in struct) {
+      return `<span class="error">${terminal.escapeHTML(name)} is a directory</span>`;
+    }
+
+    // Handle paths like "talks/squiggleconf-2025.txt"
+    if (name.includes('/')) {
+      const parts = name.split('/');
+      const dir = parts[0];
+      const file = parts.slice(1).join('/');
+      if (struct[dir] && struct[dir].includes(file) && content[file]) {
+        return content[file];
+      }
+      return `<span class="error">file not found: ${terminal.escapeHTML(filename)}</span>`;
     }
 
     // Look up in current directory's files
     const currentFiles = struct[terminal.directory] || struct.root;
-    if (currentFiles.includes(clean) && content[clean]) {
-      return content[clean];
+    if (currentFiles.includes(name) && content[name]) {
+      return content[name];
     }
 
-    // Try path like "root/about"
-    if (filename.includes('/')) {
-      const parts = filename.split('/');
-      const dir = parts[0];
-      const file = parts.slice(1).join('/').replace(/\.txt$/, '');
-      if (struct[dir] && struct[dir].includes(file) && content[file]) {
-        return content[file];
+    // Also check all directories (so `cat about.txt` works from anywhere)
+    for (const dir of Object.keys(struct)) {
+      if (struct[dir].includes(name) && content[name]) {
+        return content[name];
       }
     }
 
